@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Strava Metric Design - Group E</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css"
+            id="theme"
+        />
+        <style>
+            .reveal h1,
+            .reveal h2,
+            .reveal h3,
+            .reveal h4 {
+                text-transform: none;
+                color: #fc4c02; /* Strava Orange */
+            }
+            .reveal li {
+                margin-bottom: 0.5em;
+                font-size: 0.85em;
+            }
+            .tree-level-1 {
+                font-weight: bold;
+                color: #fc4c02;
+            }
+            .tree-level-2 {
+                font-weight: bold;
+                color: #fff;
+                margin-left: 20px;
+            }
+            .tree-level-3 {
+                color: #ccc;
+                margin-left: 40px;
+            }
+            .tree-level-4 {
+                color: #888;
+                margin-left: 60px;
+                font-size: 0.8em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- TITLE SLIDE -->
+                <section data-markdown>
+                    <textarea data-template>
+                    # Strava: Metric Design
+                    ### Group E
+                    **Macro Scope:** Core App | **Squad:** Activation
+
+                    <br>
+                    <small>Press `S` for Speaker Notes (Defense / Arguments)</small>
+                </textarea
+                    >
+                </section>
+
+                <!-- ZONE 1: CONTEXT -->
+                <section>
+                    <section data-markdown>
+                        <textarea data-template>
+                        ## Zone 1: Context
+                        ### What we do & How we earn
+
+                        * **What Strava Sells:**
+                          * To B2C: Premium subscriptions (training plans, advanced metrics, segment leaderboards).
+                          * To B2B: Strava Metro (aggregated commuter data for urban planners).
+                        * **How we earn money:** Freemium model. The free tier builds the network effect; value is monetized via the subscription paywall.
+                        * **Value Created:** Turning solitary exercise into a social, gamified experience. Tracking fitness progress and driving motivation.
+                    </textarea
+                        >
+                    </section>
+                </section>
+
+                <!-- ZONE 2: COMPANY METRIC TREE -->
+                <section>
+                    <section data-markdown>
+                        <textarea data-template>
+                        ## Zone 2: Company Tree
+                        ### The North Star Metric
+
+                        **NSM: Total Activities Logged**
+
+                        *Why?* It expresses customer value (users are working out), represents our vision (active lifestyle), is measurable, and is a leading indicator for retention and subscription revenue.
+
+                        <aside class="notes">
+                            Defense Strategy: If another team asks "Why not Revenue or MRR as NSM?", answer using the slides: Business metrics aren't a strategy. Optimizing MRR directly leads to dark patterns (making cancellation hard). "Total Activities Logged" ensures we win the product, and business metrics will follow.
+                        </aside>
+                    </textarea
+                        >
+                    </section>
+
+                    <section data-markdown>
+                        <textarea data-template>
+                        ### Company Metric Tree (1/2)
+                        *(≥ 30 Metrics structured top-down)*
+
+                        <div style="text-align: left;">
+                        <div class="tree-level-1">Total Activities Logged (NSM)</div>
+
+                        <div class="tree-level-2">↳ 1. Weekly Active Users (WAU)</div>
+                        <div class="tree-level-3">↳ New Users</div>
+                        <div class="tree-level-4">2. App Downloads | 3. Sign-ups | 4. Setup Rate | 5. CAC</div>
+                        <div class="tree-level-3">↳ Retained Users</div>
+                        <div class="tree-level-4">6. DAU | 7. Stickiness (DAU/MAU) | 8. 30-Day Retention | 9. 90-Day Retention | 10. Churned Base</div>
+                        <div class="tree-level-3">↳ Reactivated Users</div>
+                        <div class="tree-level-4">11. Reactivation Rate | 12. Dormant Base</div>
+
+                        <div class="tree-level-2">↳ 13. Activities per User (Engagement)</div>
+                        <div class="tree-level-3">↳ Tracking Engagement</div>
+                        <div class="tree-level-4">14. GPS Activities | 15. Manual Entries | 16. Wearable Syncs | 17. Time Spent Tracking</div>
+                        </div>
+                    </textarea
+                        >
+                    </section>
+
+                    <section data-markdown>
+                        <textarea data-template>
+                        ### Company Metric Tree (2/2)
+
+                        <div style="text-align: left;">
+                        <div class="tree-level-3">↳ Social Engagement (Drives Stickiness)</div>
+                        <div class="tree-level-4">18. Total Kudos Given | 19. Total Comments | 20. Photos Uploaded | 21. Friend Follows | 22. Clubs Joined</div>
+
+                        <div class="tree-level-3">↳ Gamification</div>
+                        <div class="tree-level-4">23. Segments Crossed | 24. Challenges Joined | 25. PRs Achieved</div>
+
+                        <div class="tree-level-2">↳ 26. Bridge to Revenue (Monetization)</div>
+                        <div class="tree-level-3">↳ Subscriptions</div>
+                        <div class="tree-level-4">27. Free-to-Paid CR | 28. Trial Starts | 29. Trial-to-Paid CR</div>
+                        <div class="tree-level-3">↳ Financials</div>
+                        <div class="tree-level-4">30. MRR | 31. ARPU | 32. LTV | 33. Subscriber Retention Rate</div>
+                        </div>
+
+                        <aside class="notes">
+                            Notice the "Bridge to Revenue". Total activities logged directly feeds our Social and Gamification loops (habit forming). Retained users who form habits eventually hit the paywall for advanced data -> Driving Trial Starts -> MRR.
+                        </aside>
+                    </textarea
+                        >
+                    </section>
+                </section>
+
+                <!-- ZONE 3: SQUAD METRIC STRUCTURE -->
+                <section>
+                    <section data-markdown>
+                        <textarea data-template>
+                        ## Zone 3: Squad Level
+                        ### Strava Activation Squad
+
+                        **What breaks if we disappear?**
+                        The cold start problem goes unresolved. Users download the app, see an empty feed, don't know how to pair their Garmin or track a run, and churn immediately. The entire top of the funnel leaks.
+
+                        **Main Squad Metric:**
+                        **Activation Rate** *(Share of new users who log an activity AND follow 1 friend within 7 days).*
+                    </textarea
+                        >
+                    </section>
+
+                    <section data-markdown>
+                        <textarea data-template>
+                        ### Squad Metric Structure (13 metrics)
+
+                        * **Acquisition/Setup Phase:**
+                          1. App Install to Sign-up CR
+                          2. Profile Completion Rate
+                          3. Wearable/Device Connect Rate
+                          4. Contact Sync Opt-in Rate
+                          5. Push Notification Opt-in Rate
+                        * **Aha Phase:**
+                          6. Time-to-Aha (Hours from sign-up to 1st activity)
+                          7. First Activity Upload Rate
+                          8. Share of users giving/receiving 1st Kudo
+                        * **Habit Phase:**
+                          9. Day-1 Retention | 10. Day-7 Retention
+                          11. Friend Follow Rate (Avg follows in Week 1)
+                          12. Week-1 Activities per New User
+                          13. 7-Day Habit Rate (Share logging ≥3 activities in 7 days)
+                    </textarea
+                        >
+                    </section>
+
+                    <section data-markdown>
+                        <textarea data-template>
+                        ### Contribution to Company Goals
+
+                        Our squad's **Activation Rate** is the leading indicator for the company's **Total Activities Logged** (NSM).
+
+                        We dictate the *volume* of the engaged user base. A higher activation rate means more users surviving Month 1, providing the critical mass needed for the Monetization squad to drive MRR.
+
+                        <aside class="notes">
+                            Defense Note: As seen in the slides, Aha is a "data-validated segment". Below the Aha threshold, churn dominates. Above it, retention stabilizes. Our squad solely exists to push users over this threshold.
+                        </aside>
+                    </textarea
+                        >
+                    </section>
+                </section>
+
+                <!-- ZONE 4: FEATURE DEEP DIVE -->
+                <section>
+                    <section data-markdown>
+                        <textarea data-template>
+                        ## Zone 4: Feature Deep-Dive
+                        ### Beginner 7-Day Challenge
+
+                        **Entry Points:** Post-registration onboarding screen (Opt-in prompt).
+
+                        **Process (The Loop):**
+                        1. Sign-up -> See Challenge prompt -> Tap "Accept"
+                        2. Receive daily Push Notification nudges
+                        3. User logs an activity
+                        4. UI updates: Streak counter increments
+                        5. Day 7 complete -> Receives digital badge
+                        6. Taps "Share" -> Posts to Strava Feed / IG Stories.
+                    </textarea
+                        >
+                    </section>
+
+                    <section data-markdown>
+                        <textarea data-template>
+                        ### Value & Quality Signals
+
+                        **Value:** Bootstraps intrinsic motivation with an immediate extrinsic reward. Gives overwhelmed new users a simple, binary goal.
+
+                        **Quality & Satisfaction Signals:**
+                        * **Adoption:** Challenge Opt-in Rate.
+                        * **Engagement:** Push Notification Open Rate.
+                        * **Survival:** Day-by-Day Survival Rate (Completion of D1, D2...D7).
+                        * **Task Success:** Overall Challenge Completion Rate.
+                        * **Referral:** Day 7 Share Button CTR.
+                    </textarea
+                        >
+                    </section>
+
+                    <section data-markdown>
+                        <textarea data-template>
+                        ### Trade-offs & Failure Modes
+                        *What could break or get worse?*
+
+                        * **Notification Fatigue:** Daily pushes might annoy users, driving them to disable notifications globally or delete the app. *(Track: Push Unsubscribe Rate)*
+                        * **Goodhart’s Law / Cannibalization:** Users logging fake 1-minute walks just to keep the streak alive. Metrics go up, actual health value goes down. *(Track: Median duration of logged activities for cohort)*
+                        * **The Post-Challenge Cliff:** Users might drop off completely on Day 8 because the badge is achieved and motivation vanishes. *(Track: Day 8-14 Retention Rate vs Control Group).*
+
+                        <aside class="notes">
+                            Defense Note: Referencing "Goodhart's Law" from the Day 2 slides: "When a measure becomes a target, it ceases to be a good measure." If we target streak completion, users will game the streak. We must measure the *quality* of the activities, not just the count.
+                        </aside>
+                    </textarea
+                        >
+                    </section>
+                </section>
+
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Thank you.
+                    ### Questions?
+
+                    *(Ready to defend our metric tree!)*
+                </textarea
+                    >
+                </section>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.js"></script>
+        <script>
+            Reveal.initialize({
+                plugins: [RevealMarkdown],
+                slideNumber: true,
+                hash: true,
+            });
+        </script>
+    </body>
+</html>

@@ -18,7 +18,7 @@
 
             /* Global Styles Override */
             body {
-                background: #0b0b0c !important; /* Rich charcoal black */
+                background: #0b0b0c !important;
                 background-image: radial-gradient(circle at 80% 20%, rgba(252, 76, 2, 0.15) 0%, transparent 50%),
                                   radial-gradient(circle at 20% 80%, rgba(0, 194, 136, 0.08) 0%, transparent 50%) !important;
                 background-attachment: fixed !important;
@@ -27,7 +27,7 @@
                 font-family: 'Outfit', 'Inter', sans-serif !important;
                 color: #e2e2e9 !important;
             }
-            
+
             /* Typography */
             .reveal h1,
             .reveal h2,
@@ -45,72 +45,70 @@
                 text-shadow: 0 0 30px rgba(252, 76, 2, 0.3);
             }
             .reveal h2 {
-                color: #fc4c02 !important; /* Strava Orange */
+                color: #fc4c02 !important;
                 font-weight: 700 !important;
                 margin-top: 0 !important;
-                margin-bottom: 5px !important;
+                margin-bottom: 4px !important;
+                font-size: 1.5em !important;
             }
             .reveal h3 {
                 color: #9a9ab0 !important;
                 font-weight: 400 !important;
-                font-size: 0.85em !important;
-                margin-bottom: 25px !important;
+                font-size: 0.78em !important;
+                margin-bottom: 22px !important;
             }
             .reveal h4 {
                 color: #ffffff !important;
                 font-weight: 600 !important;
                 margin-top: 0 !important;
             }
+            .reveal p { line-height: 1.5; }
 
             /* Custom Components */
             .glass-card {
-                background: rgba(255, 255, 255, 0.03) !important;
-                border: 1px solid rgba(255, 255, 255, 0.06) !important;
+                background: rgba(255, 255, 255, 0.035) !important;
+                border: 1px solid rgba(255, 255, 255, 0.07) !important;
                 backdrop-filter: blur(16px) !important;
-                border-radius: 16px !important;
-                padding: 24px !important;
+                border-radius: 14px !important;
+                padding: 18px 20px !important;
                 box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5) !important;
-                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                transition: border-color 0.25s ease, background 0.25s ease !important;
+                height: 100%;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
             }
             .glass-card:hover {
-                border-color: rgba(252, 76, 2, 0.4) !important;
+                border-color: rgba(252, 76, 2, 0.35) !important;
                 background: rgba(255, 255, 255, 0.05) !important;
-                transform: translateY(-4px) !important;
-                box-shadow: 0 16px 50px 0 rgba(252, 76, 2, 0.15) !important;
             }
             .badge {
                 display: inline-block;
-                padding: 4px 12px;
+                padding: 3px 10px;
                 border-radius: 20px;
-                font-size: 0.55em;
+                font-size: 0.52em;
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 1px;
-                margin-bottom: 8px;
-            }
-            
-            /* Helper classes */
-            .highlight-orange {
-                color: #fc4c02 !important;
-            }
-            .highlight-green {
-                color: #00c288 !important;
-            }
-            .highlight-blue {
-                color: #007aff !important;
-            }
-            .highlight-gold {
-                color: #ffd700 !important;
+                margin-bottom: 6px;
             }
 
+            /* Helper classes */
+            .highlight-orange { color: #fc4c02 !important; }
+            .highlight-green  { color: #00c288 !important; }
+            .highlight-blue   { color: #007aff !important; }
+            .highlight-gold   { color: #ffd700 !important; }
+
             /* Slide Layout Constraints */
-            .reveal .slides {
-                text-align: center;
-            }
+            .reveal .slides { text-align: center; }
             .reveal .slides section {
-                padding: 20px 0 !important;
+                padding: 0 !important;
                 box-sizing: border-box;
+                height: 100%;
             }
+
+            /* Grid utility: stretches grid children to equal height */
+            .grid-stretch { align-items: stretch; }
         </style>
     </head>
     <body>
@@ -846,14 +844,14 @@
         <script>
             Reveal.initialize({
                 plugins: [RevealMarkdown],
-                slideNumber: 'c/t', /* Modern slide numbering format: current/total */
+                slideNumber: 'c/t',
                 hash: true,
-                transition: 'slide', /* Sleek slide transitions */
+                transition: 'fade',
                 transitionSpeed: 'default',
-                center: true,
-                width: 1050,
-                height: 700,
-                margin: 0.04,
+                center: false,
+                width: 1280,
+                height: 800,
+                margin: 0.05,
                 minScale: 0.2,
                 maxScale: 2.0
             });

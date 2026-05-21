@@ -16,7 +16,6 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
-            /* Global Styles Override */
             body {
                 background: #0b0b0c !important;
                 background-image: radial-gradient(circle at 80% 20%, rgba(252, 76, 2, 0.15) 0%, transparent 50%),
@@ -28,13 +27,7 @@
                 color: #e2e2e9 !important;
             }
 
-            /* Typography */
-            .reveal h1,
-            .reveal h2,
-            .reveal h3,
-            .reveal h4,
-            .reveal h5,
-            .reveal h6 {
+            .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
                 font-family: 'Outfit', sans-serif !important;
                 text-transform: none !important;
                 letter-spacing: -0.5px !important;
@@ -47,15 +40,14 @@
             .reveal h2 {
                 color: #fc4c02 !important;
                 font-weight: 700 !important;
-                margin-top: 0 !important;
-                margin-bottom: 4px !important;
+                margin: 0 0 4px 0 !important;
                 font-size: 1.5em !important;
             }
             .reveal h3 {
                 color: #9a9ab0 !important;
                 font-weight: 400 !important;
-                font-size: 0.78em !important;
-                margin-bottom: 22px !important;
+                font-size: 0.72em !important;
+                margin: 0 0 22px 0 !important;
             }
             .reveal h4 {
                 color: #ffffff !important;
@@ -64,19 +56,19 @@
             }
             .reveal p { line-height: 1.5; }
 
-            /* Custom Components */
             .glass-card {
                 background: rgba(255, 255, 255, 0.035) !important;
                 border: 1px solid rgba(255, 255, 255, 0.07) !important;
                 backdrop-filter: blur(16px) !important;
                 border-radius: 14px !important;
                 padding: 18px 20px !important;
-                box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5) !important;
+                box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4) !important;
                 transition: border-color 0.25s ease, background 0.25s ease !important;
                 height: 100%;
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
+                text-align: left;
             }
             .glass-card:hover {
                 border-color: rgba(252, 76, 2, 0.35) !important;
@@ -93,745 +85,826 @@
                 margin-bottom: 6px;
             }
 
-            /* Helper classes */
             .highlight-orange { color: #fc4c02 !important; }
             .highlight-green  { color: #00c288 !important; }
-            .highlight-blue   { color: #007aff !important; }
             .highlight-gold   { color: #ffd700 !important; }
 
-            /* Slide Layout Constraints */
             .reveal .slides { text-align: center; }
             .reveal .slides section {
-                padding: 0 !important;
                 box-sizing: border-box;
                 height: 100%;
+                padding: 0 !important;
             }
 
-            /* Grid utility: stretches grid children to equal height */
-            .grid-stretch { align-items: stretch; }
+            /* Stack-title chip — shows the parent zone on each vertical slide */
+            .stack-chip {
+                display: inline-block;
+                font-size: 0.42em;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #8e8e93;
+                margin-bottom: 6px;
+            }
+            .stack-chip .dot { color: #FC4C02; margin: 0 6px; }
+
+            /* Grid helpers */
+            .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 96%; margin: 0 auto; text-align: left; }
+            .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; width: 96%; margin: 0 auto; text-align: left; }
+
+            /* Metric list inside a tree column */
+            .metric-list {
+                font-size: 0.62em;
+                line-height: 1.75;
+                color: #b4b4c6;
+                margin: 0;
+            }
+            .metric-list strong { color: #fff; font-weight: 600; }
+
+            .col-head {
+                font-weight: 700;
+                margin-bottom: 12px;
+                font-size: 1em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sub-head {
+                color: #fff;
+                font-weight: 600;
+                font-size: 0.7em;
+                text-transform: uppercase;
+                letter-spacing: 1.2px;
+                margin: 4px 0 6px 0;
+            }
+
+            /* Bridge step circle */
+            .step-num {
+                background: rgba(252,76,2,0.18);
+                color: #FC4C02;
+                font-weight: 800;
+                width: 30px; height: 30px;
+                border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 0.7em;
+                flex-shrink: 0;
+            }
         </style>
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
-                
-                <!-- TITLE SLIDE -->
+
+                <!-- ===================== TITLE ===================== -->
                 <section>
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 550px;">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
                         <div style="margin-bottom: 25px;">
-                            <!-- Strava Custom Brand Logo Concept (Double Chevron pointing up) -->
                             <svg height="90" width="90" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Large upper-left chevron -->
                                 <polygon points="60,10 100,80 78,80 60,42 42,80 20,80" fill="#FC4C02"/>
-                                <!-- Smaller lower-right chevron -->
                                 <polygon points="90,65 110,100 99,100 90,81 81,100 70,100" fill="#FC4C02" opacity="0.75"/>
                             </svg>
                         </div>
-                        <h1 style="font-size: 2.8em; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 5px; background: linear-gradient(135deg, #ffffff 40%, #fc4c02 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">STRAVA</h1>
-                        <h2 style="font-size: 1.3em; font-weight: 600; color: #ffffff; margin-bottom: 35px; letter-spacing: 0px;">Product Metric Design</h2>
-                        
-                        <div style="display: flex; gap: 15px; margin-bottom: 50px; justify-content: center;">
+                        <h1 style="font-size: 2.8em; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 5px; background: linear-gradient(135deg, #ffffff 40%, #fc4c02 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">STRAVA</h1>
+                        <h2 style="font-size: 1.2em; font-weight: 600; color: #ffffff !important; margin-bottom: 32px; letter-spacing: 0px;">Product Metric Design</h2>
+
+                        <div style="display: flex; gap: 12px; margin-bottom: 40px; justify-content: center;">
                             <span class="badge" style="background: rgba(252, 76, 2, 0.15); color: #FC4C02; border: 1px solid rgba(252, 76, 2, 0.3);">Scope: Core App</span>
                             <span class="badge" style="background: rgba(0, 194, 136, 0.15); color: #00C288; border: 1px solid rgba(0, 194, 136, 0.3);">Squad: Activation</span>
                             <span class="badge" style="background: rgba(255, 255, 255, 0.08); color: #e2e2e9; border: 1px solid rgba(255, 255, 255, 0.15);">Group E</span>
                         </div>
-                        
-                        <div style="font-size: 0.58em; color: #8e8e93; text-transform: uppercase; letter-spacing: 2px;">
-                            Press <strong style="color: #FC4C02; border: 1px solid rgba(252, 76, 2, 0.4); padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,0.3); font-family: monospace; font-size: 1.1em;">S</strong> for Speaker Notes (Defense / Arguments)
+
+                        <div style="font-size: 0.5em; color: #8e8e93; letter-spacing: 2px; text-transform: uppercase;">
+                            → next zone &nbsp;·&nbsp; ↓ drill into zone &nbsp;·&nbsp; <strong style="color:#FC4C02;">S</strong> speaker notes
                         </div>
                     </div>
                     <aside class="notes">
-                        Welcome stakeholders and colleagues.
-                        Today, representing Group E, we will present the Metric Design for Strava.
-                        Specifically focusing on the Core App's social and logging framework and drilling deep into the Activation Squad's first-week onboarding mechanics.
+                        Welcome. Group E — Strava, Activation Squad. The deck is organised as vertical stacks: one column per zone, drill down with ↓ for detail.
                     </aside>
                 </section>
 
-                <!-- ZONE 1: CONTEXT -->
+                <!-- ===================== ZONE 1: CONTEXT ===================== -->
                 <section>
-                    <h2>Zone 1: Context</h2>
-                    <h3>What we sell, how we earn, and user value</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 96%; margin: 0 auto;">
-                        
-                        <!-- Value Prop B2C/B2B -->
+                    <h2>Zone 1 — Context</h2>
+                    <h3>What we sell, how we earn, what we create for users</h3>
+
+                    <div class="grid-3">
                         <div class="glass-card">
-                            <div style="color: #FC4C02; font-size: 2.2em; margin-bottom: 12px; line-height: 1;">🏷️</div>
-                            <h4 style="font-size: 1.05em; margin-bottom: 12px;">What We Sell</h4>
-                            <p style="font-size: 0.65em; line-height: 1.5; color: #b4b4c6; margin: 0;">
-                                <strong style="color: #fff;">B2C Premium Subscriptions:</strong> Advanced telemetry diagnostics (heart rate, power output, relative effort), offline routing tools, and live segment competitor leaderboards.<br><br>
-                                <strong style="color: #fff;">B2B Datasets (Metro):</strong> Aggregated, fully anonymized commuter routing telemetry sold to local urban planners for transit infrastructure.
+                            <div style="color: #FC4C02; font-size: 2em; margin-bottom: 10px; line-height: 1;">🏷️</div>
+                            <h4 style="font-size: 1.05em; margin-bottom: 10px;">What We Sell</h4>
+                            <p style="font-size: 0.65em; line-height: 1.55; color: #b4b4c6; margin: 0;">
+                                <strong style="color: #fff;">B2C Premium:</strong> advanced telemetry (HR, power, relative effort), offline routes, live segment leaderboards.<br><br>
+                                <strong style="color: #fff;">B2B Metro:</strong> anonymised commuter routing telemetry sold to urban planners.
                             </p>
                         </div>
-                        
-                        <!-- Revenue Engine -->
+
                         <div class="glass-card">
-                            <div style="color: #00C288; font-size: 2.2em; margin-bottom: 12px; line-height: 1;">💵</div>
-                            <h4 style="font-size: 1.05em; margin-bottom: 12px;">How We Earn</h4>
-                            <p style="font-size: 0.65em; line-height: 1.5; color: #b4b4c6; margin: 0;">
-                                <strong style="color: #fff;">Freemium Network Model:</strong> Free utilities build the world's largest athletic database, forming an organic social moat.<br><br>
-                                <strong style="color: #fff;">Premium conversion:</strong> As habits solidify, free users are continuously routed into paid plans via feature gates (e.g. segment comparisons, route planning).
+                            <div style="color: #00C288; font-size: 2em; margin-bottom: 10px; line-height: 1;">💵</div>
+                            <h4 style="font-size: 1.05em; margin-bottom: 10px;">How We Earn</h4>
+                            <p style="font-size: 0.65em; line-height: 1.55; color: #b4b4c6; margin: 0;">
+                                <strong style="color: #fff;">Freemium with a social moat.</strong> Free utilities build the largest athletic graph; that graph is the acquisition engine.<br><br>
+                                Premium is sold through habit-driven feature gates (segment comparisons, route planning, training load).
                             </p>
                         </div>
-                        
-                        <!-- Core Value -->
+
                         <div class="glass-card">
-                            <div style="color: #ffd700; font-size: 2.2em; margin-bottom: 12px; line-height: 1;">⚡</div>
-                            <h4 style="font-size: 1.05em; margin-bottom: 12px;">User Value Created</h4>
-                            <p style="font-size: 0.65em; line-height: 1.5; color: #b4b4c6; margin: 0;">
-                                <strong style="color: #fff;">Social Motivation Engine:</strong> Turning solitary, monotonous exercise routines into a gamified, supportive community experience.<br><br>
-                                <strong style="color: #fff;">Identity & Tracking:</strong> Creating a digital locker for historical fitness goals, progression data, and peer-to-peer kudos validation.
+                            <div style="color: #ffd700; font-size: 2em; margin-bottom: 10px; line-height: 1;">⚡</div>
+                            <h4 style="font-size: 1.05em; margin-bottom: 10px;">User Value</h4>
+                            <p style="font-size: 0.65em; line-height: 1.55; color: #b4b4c6; margin: 0;">
+                                <strong style="color: #fff;">Social motivation engine.</strong> Solitary training becomes a gamified, supportive feed.<br><br>
+                                <strong style="color: #fff;">Identity & memory.</strong> A digital locker for personal records, routes, and peer validation.
                             </p>
                         </div>
-                        
                     </div>
-                    
+
                     <aside class="notes">
-                        Zone 1 Highlights:
-                        - Strava's B2C monetization is premium subscription. 
-                        - Our organic acquisition strategy relies entirely on network effects: more runners/cyclists invite their friends, increasing feed density, and creating higher utility for everyone.
-                        - This sets the stage for our Activation squad, who ensures that new sign-ups enter this value loop immediately.
+                        B2C subscription is the primary revenue line; the free network is the acquisition flywheel. Activation squad's job: get new users into that loop before they churn.
                     </aside>
                 </section>
 
-                <!-- ZONE 2: NORTH STAR METRIC -->
+                <!-- ===================== ZONE 2 STACK (vertical) ===================== -->
                 <section>
-                    <h2>Zone 2: The North Star Metric</h2>
-                    <h3>Our Primary Performance Compass & Guardrails</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1.1fr 1.9fr; gap: 20px; width: 96%; margin: 0 auto; text-align: left;">
-                        
-                        <!-- Left: NSM definition -->
-                        <div class="glass-card" style="border-left: 4px solid #FC4C02; display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <span class="badge" style="background: rgba(252,76,2,0.15); color: #FC4C02;">Primary Core Metric</span>
-                                <h4 style="font-size: 1.25em; margin: 8px 0 12px 0;">Total Activities Logged</h4>
-                                <p style="font-size: 0.68em; line-height: 1.5; color: #b4b4c6; margin: 0;">
-                                    The direct expression of core product utility. If a user uploads an activity, they successfully worked out and synced telemetry data.
-                                    <br><br>
-                                    It drives social density, feeds the feed algorithm, and directly leads to habit retention and paywall exposures.
-                                </p>
-                            </div>
-                            
-                            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px; margin-top: 15px;">
-                                <h5 style="color: #ffffff; font-size: 0.75em; margin: 0 0 5px 0;">Why not MRR?</h5>
-                                <p style="font-size: 0.6em; line-height: 1.4; color: #8e8e93; margin: 0;">
-                                    Revenue is a lagging business outcome. Optimizing it directly encourages short-term paywalls that kill the free network base and choke the long-term acquisition funnel.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Right: Caveats and Constellations -->
-                        <div class="glass-card" style="border-left: 4px solid #ffd700;">
-                            <span class="badge" style="background: rgba(255, 215, 0, 0.15); color: #ffd700;">Constellation Safeguards</span>
-                            <h4 style="font-size: 1.15em; margin: 8px 0 16px 0;">Risk Mitigation & Counter-Metrics</h4>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.66em; line-height: 1.45;">
-                                <div>
-                                    <strong style="color: #fc4c02;">1. Metric Gaming (Goodhart's Law):</strong>
-                                    <div style="color: #b4b4c6; margin-left: 10px; margin-top: 2px;">
-                                        <em>Risk:</em> Users uploading multiple fake/empty 1-minute manual activities to gamify streaks.
-                                        <br><em>Mitigation:</em> Track <strong>GPS-Verified Activity Rate (%)</strong> and <strong>Median Active Session Duration</strong>.
-                                    </div>
-                                </div>
-                                <div>
-                                    <strong style="color: #fc4c02;">2. Extreme Climate Seasonality:</strong>
-                                    <div style="color: #b4b4c6; margin-left: 10px; margin-top: 2px;">
-                                        <em>Risk:</em> Activities plunge in winter, making short-term performance look like failure.
-                                        <br><em>Mitigation:</em> Analyze trends on a <strong>12-Week Rolling Average</strong> and evaluate YoY cohort curves.
-                                    </div>
-                                </div>
-                                <div>
-                                    <strong style="color: #fc4c02;">3. Power-User Skew:</strong>
-                                    <div style="color: #b4b4c6; margin-left: 10px; margin-top: 2px;">
-                                        <em>Risk:</em> Top 5% athletes logging 10 activities/week mask overall user base churn.
-                                        <br><em>Mitigation:</em> Balance as a Constellation with <strong>Weekly Active Loggers (WAL)</strong>.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <aside class="notes">
-                        NSM Caveats Notes:
-                        - Total Activities Logged is our primary star, but it must be paired with guardrails (Constellation).
-                        - Goodhart's law states that when a measure becomes a target, it ceases to be a good measure. By tracking GPS-verified activities and median duration, we prevent gamification.
-                        - Tracking Weekly Active Loggers (WAL) ensures we monitor the breadth of active users, not just volume skewed by hyperactive users.
-                    </aside>
-                </section>
 
-                <!-- ZONE 2: COMPANY TREE (PART 1) -->
-                <section>
-                    <h2>Zone 2: Company Metric Tree</h2>
-                    <h3>Hierarchical Breakdown — Part 1: Active Base & Engagement</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; width: 98%; margin: 0 auto; text-align: left; font-size: 0.58em;">
-                        
-                        <!-- Column 1: WAU & User Lifecycle -->
-                        <div class="glass-card" style="border-top: 3px solid #FC4C02;">
-                            <div style="font-weight: 700; color: #FC4C02; margin-bottom: 10px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>1. Active Base (WAU)</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Volume</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 8px; border-left: 2px solid #ccc;">
-                                    <strong style="color: #FFF;">Acquisition</strong>
-                                    <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                        2. App Installs / Downloads (#)<br>
-                                        3. New Account Sign-ups (#)<br>
-                                        4. Profile Setup Completion (%)<br>
-                                        5. CAC (Customer Acquisition Cost)
-                                    </div>
-                                </div>
-                                
-                                <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 8px; border-left: 2px solid #00C288;">
-                                    <strong style="color: #FFF;">Retention & Churn</strong>
-                                    <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                        6. Daily Active Users (DAU)<br>
-                                        7. App Stickiness Ratio (DAU/MAU)<br>
-                                        8. Day-30 Cohort Retention (%)<br>
-                                        9. Day-90 Cohort Retention (%)<br>
-                                        10. Monthly Churned User Base (#)
-                                    </div>
-                                </div>
+                    <!-- 2a: NSM definition + safeguards -->
+                    <section>
+                        <div class="stack-chip">Zone 2 <span class="dot">●</span> Company tree</div>
+                        <h2>North Star Metric</h2>
+                        <h3>Primary compass, with explicit safeguards</h3>
 
-                                <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 8px; border-left: 2px solid #ffd700;">
-                                    <strong style="color: #FFF;">Reactivation Loop</strong>
-                                    <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                        11. Reactivation Conversion Rate (%)<br>
-                                        12. Total Dormant Base (1mo+ inactive)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Column 2: Log Engagement -->
-                        <div class="glass-card" style="border-top: 3px solid #00C288;">
-                            <div style="font-weight: 700; color: #00C288; margin-bottom: 10px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>13. Activities / User</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(0, 194, 136, 0.1); border: 1px solid rgba(0, 194, 136, 0.2);">Telemetry</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 8px; border-left: 2px solid #ccc;">
-                                    <strong style="color: #FFF;">Activity Sources</strong>
-                                    <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                        14. GPS-Tracked Activities (#)<br>
-                                        15. Manual Activity Submissions (#)<br>
-                                        16. Wearable Integration Syncs (#)<br>
-                                        17. Time Spent Recording (Minutes)
-                                    </div>
-                                </div>
-                                
-                                <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 8px; border-left: 2px solid #00C288;">
-                                    <strong style="color: #FFF;">Physical Dimension</strong>
-                                    <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                        • Outdoor (Runs, Rides, Walks)<br>
-                                        • Indoor (Strength, Treadmill, Yoga)<br>
-                                        • Commute Logs Ratio (%)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Column 3: Social & Gamification -->
-                        <div class="glass-card" style="border-top: 3px solid #ffd700;">
-                            <div style="font-weight: 700; color: #ffd700; margin-bottom: 10px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>Social & Loop Drivers</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.2);">Retention Moat</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 8px; border-left: 2px solid #ccc;">
-                                    <strong style="color: #FFF;">Interactions</strong>
-                                    <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                        18. Kudos Distributed (#)<br>
-                                        19. Comments Posted (#)<br>
-                                        20. Photos Linked per Activity (#)<br>
-                                        21. Friend Follow Graph Density (#)<br>
-                                        22. Commuter / Club Groups Joined (#)
-                                    </div>
-                                </div>
-                                
-                                <div style="background: rgba(255,255,255,0.02); padding: 8px; border-radius: 8px; border-left: 2px solid #ffd700;">
-                                    <strong style="color: #FFF;">Gamified Rewards</strong>
-                                    <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                        23. Segments Crossed / Matched (#)<br>
-                                        24. Challenges Joined (#)<br>
-                                        25. Personal Records Achieved (PRs)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <aside class="notes">
-                        Tree Breakdown:
-                        - The company tree breaks our North Star down into: Active base volume (WAU), Telemetry depth (Activities/User), and Social Moats (Kudos, comments, segments).
-                        - Notice how we map acquisition and retention. If WAU is healthy, but social engagement metrics (18-22) drop, retention curves will collapse next month.
-                    </aside>
-                </section>
-
-                <!-- ZONE 2: COMPANY TREE (PART 2) -->
-                <section>
-                    <h2>Zone 2: Company Metric Tree</h2>
-                    <h3>Hierarchical Breakdown — Part 2: Bridge to Revenue</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1.25fr; gap: 20px; width: 96%; margin: 0 auto; text-align: left; font-size: 0.62em;">
-                        
-                        <!-- Column 1: Financial & Monetization metrics -->
-                        <div class="glass-card" style="border-top: 3px solid #00C288; display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <div style="font-weight: 700; color: #00C288; margin-bottom: 12px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                    <span>26. Monetization Metrics</span>
-                                    <span class="badge" style="font-size: 0.5em; background: rgba(0, 194, 136, 0.1); border: 1px solid rgba(0, 194, 136, 0.2);">Output</span>
-                                </div>
-                                
-                                <div style="display: flex; flex-direction: column; gap: 10px;">
-                                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border-left: 2px solid #ccc;">
-                                        <strong style="color: #FFF;">Subscription Funnel</strong>
-                                        <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                            27. Free-to-Paid Subscription CR (%)<br>
-                                            28. Premium Trial Starts (#)<br>
-                                            29. Trial-to-Paid Retention Rate (%)
-                                        </div>
-                                    </div>
-                                    
-                                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; border-left: 2px solid #FC4C02;">
-                                        <strong style="color: #FFF;">Financial Values</strong>
-                                        <div style="color: #9a9ab0; margin-top: 3px; line-height: 1.4;">
-                                            30. Monthly Recurring Revenue (MRR)<br>
-                                            31. Average Revenue Per User (ARPU)<br>
-                                            32. Customer Lifetime Value (LTV)<br>
-                                            33. Premium Subscriber Churn Rate (%)
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Column 2: Visual Bridge Flow -->
-                        <div class="glass-card" style="border-top: 3px solid #FC4C02; display: flex; flex-direction: column;">
-                            <div style="font-weight: 700; color: #ffffff; margin-bottom: 15px; font-size: 1.1em;">
-                                The Bridge: North Star to Revenue Pipeline
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <!-- Link 1 -->
-                                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                                    <div style="background: rgba(252,76,2,0.15); color: #FC4C02; font-weight: bold; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75em; flex-shrink: 0; margin-top: 2px;">1</div>
-                                    <div>
-                                        <strong style="color: #ffffff; font-size: 0.95em;">Log Activities (NSM ↑)</strong>
-                                        <p style="color: #9a9ab0; font-size: 0.9em; margin: 2px 0 0 0; line-height: 1.3;">Telemetry is synced, populating feed algorithms with active content.</p>
-                                    </div>
-                                </div>
-                                <div style="color: #fc4c02; font-weight: 900; margin-left: 10px; line-height: 1; font-size: 0.95em;">↓</div>
-                                
-                                <!-- Link 2 -->
-                                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                                    <div style="background: rgba(252,76,2,0.15); color: #FC4C02; font-weight: bold; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75em; flex-shrink: 0; margin-top: 2px;">2</div>
-                                    <div>
-                                        <strong style="color: #ffffff; font-size: 0.95em;">Feed Density & Peer Loops ↑</strong>
-                                        <p style="color: #9a9ab0; font-size: 0.9em; margin: 2px 0 0 0; line-height: 1.3;">Friends receive active logs, prompting followgraph density, comments, and kudos. Retention is locked in.</p>
-                                    </div>
-                                </div>
-                                <div style="color: #fc4c02; font-weight: 900; margin-left: 10px; line-height: 1; font-size: 0.95em;">↓</div>
-                                
-                                <!-- Link 3 -->
-                                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                                    <div style="background: rgba(252,76,2,0.15); color: #FC4C02; font-weight: bold; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75em; flex-shrink: 0; margin-top: 2px;">3</div>
-                                    <div>
-                                        <strong style="color: #ffffff; font-size: 0.95em;">Subscription Paywall Exposure ↑</strong>
-                                        <p style="color: #9a9ab0; font-size: 0.9em; margin: 2px 0 0 0; line-height: 1.3;">Habituated users want to compare segment leaderboard runs, map new routes, or audit physical fatigue index features.</p>
-                                    </div>
-                                </div>
-                                <div style="color: #fc4c02; font-weight: 900; margin-left: 10px; line-height: 1; font-size: 0.95em;">↓</div>
-                                
-                                <!-- Link 4 -->
-                                <div style="display: flex; align-items: flex-start; gap: 12px;">
-                                    <div style="background: rgba(252,76,2,0.15); color: #FC4C02; font-weight: bold; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75em; flex-shrink: 0; margin-top: 2px;">4</div>
-                                    <div>
-                                        <strong style="color: #ffffff; font-size: 0.95em;">Paid Subscriptions (MRR / LTV ↑)</strong>
-                                        <p style="color: #9a9ab0; font-size: 0.9em; margin: 2px 0 0 0; line-height: 1.3;">Trial starts (28) scale. Higher retention (33) expands long-term customer lifetime value (32).</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <aside class="notes">
-                        Bridge to Revenue:
-                        - Explain to stakeholders that we don't convert users on day 1. 
-                        - Conversion is a lagging effect of workout frequency. A user with 50 logged workouts is infinitely more likely to upgrade to premium for training metrics than a user with 2 workouts.
-                        - This shows the direct causal connection from "Total Activities Logged" to subscription cash flow.
-                    </aside>
-                </section>
-
-                <!-- ZONE 3: SQUAD MANDATE -->
-                <section>
-                    <h2>Zone 3: Squad Level</h2>
-                    <h3>Mandate, Risks, and Core Metrics</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1.15fr 1.85fr; gap: 20px; width: 96%; margin: 0 auto; text-align: left;">
-                        
-                        <!-- Card Left: Squad Role -->
-                        <div class="glass-card" style="border-left: 4px solid #FC4C02; display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <span class="badge" style="background: rgba(252,76,2,0.15); color: #FC4C02;">Squad Mandate</span>
-                                <h4 style="font-size: 1.25em; margin: 8px 0 12px 0;">Strava Activation Squad</h4>
+                        <div class="grid-2" style="grid-template-columns: 1.05fr 1.4fr;">
+                            <div class="glass-card" style="border-left: 4px solid #FC4C02;">
+                                <span class="badge" style="background: rgba(252,76,2,0.15); color: #FC4C02;">Primary metric</span>
+                                <h4 style="font-size: 1.2em; margin: 6px 0 10px 0;">Total Activities Logged</h4>
                                 <p style="font-size: 0.66em; line-height: 1.55; color: #b4b4c6; margin: 0;">
-                                    <strong>What breaks if we disappear?</strong>
-                                    <br>
-                                    The cold start problem remains unsolved. Acquisition budgets (CAC) are burnt as new users download the app, see an empty feed, fail to pair device sensors, and churn. 
+                                    The direct expression of core utility. An upload means the user trained, synced telemetry, and re-entered the loop.
                                     <br><br>
-                                    The top of our active user funnel becomes a leaking bucket.
+                                    It drives feed density, retention, and paywall exposures.
                                 </p>
+                                <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; margin-top: 14px;">
+                                    <div class="sub-head" style="color:#fc4c02;">Why not MRR?</div>
+                                    <p style="font-size: 0.6em; line-height: 1.5; color: #8e8e93; margin: 0;">
+                                        MRR is a lagging business output. Targeting it directly pushes aggressive paywalls that erode the free network — the very thing that fills the funnel.
+                                    </p>
+                                </div>
                             </div>
-                            
-                            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px; margin-top: 15px; font-size: 0.6em; color: #8e8e93;">
-                                <strong>Target Metrics:</strong> First-week engagement density, sensor sync, social setup.
+
+                            <div class="glass-card" style="border-left: 4px solid #ffd700;">
+                                <span class="badge" style="background: rgba(255, 215, 0, 0.15); color: #ffd700;">Constellation safeguards</span>
+                                <h4 style="font-size: 1.1em; margin: 6px 0 12px 0;">Risk mitigation</h4>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.66em; line-height: 1.5;">
+                                    <div>
+                                        <strong style="color: #fc4c02;">1. Goodhart's Law</strong>
+                                        <div style="color: #b4b4c6; margin-top: 2px;">
+                                            <em>Risk:</em> users gaming streaks with empty 1-minute manual logs.<br>
+                                            <em>Counter:</em> GPS-Verified Activity Rate (%) and Median Session Duration.
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fc4c02;">2. Seasonality</strong>
+                                        <div style="color: #b4b4c6; margin-top: 2px;">
+                                            <em>Risk:</em> winter dips read as failure.<br>
+                                            <em>Counter:</em> 12-week rolling average and YoY cohort curves.
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fc4c02;">3. Power-user skew</strong>
+                                        <div style="color: #b4b4c6; margin-top: 2px;">
+                                            <em>Risk:</em> the top 5% hides churn in the breadth of the base.<br>
+                                            <em>Counter:</em> pair NSM with Weekly Active Loggers (WAL).
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <!-- Card Right: Metric Justification -->
-                        <div class="glass-card" style="border-left: 4px solid #00C288; display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <span class="badge" style="background: rgba(0, 194, 136, 0.15); color: #00C288;">Main Squad Metric</span>
-                                <h4 style="font-size: 1.25em; margin: 8px 0 10px 0;">Activation Rate</h4>
-                                <div style="font-size: 0.75em; font-weight: 700; color: #00c288; margin-bottom: 15px; line-height: 1.35;">
+                        <aside class="notes">
+                            Pair the NSM with WAL so we measure both depth and breadth. Treating this as a constellation, not a single number, is the defence against gaming and seasonal noise.
+                        </aside>
+                    </section>
+
+                    <!-- 2b: Tree — Active Base -->
+                    <section>
+                        <div class="stack-chip">Zone 2 <span class="dot">●</span> Tree branch 1 of 4</div>
+                        <h2>Active Base (WAU)</h2>
+                        <h3>Acquisition · Retention · Reactivation</h3>
+
+                        <div class="grid-3">
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div class="col-head" style="color: #FC4C02;">
+                                    <span>Acquisition</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Inflow</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>2.</strong> App Installs / Downloads (#)<br>
+                                    <strong>3.</strong> New Account Sign-ups (#)<br>
+                                    <strong>4.</strong> Profile Setup Completion (%)<br>
+                                    <strong>5.</strong> CAC (Customer Acquisition Cost)
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div class="col-head" style="color: #00C288;">
+                                    <span>Retention &amp; Churn</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(0,194,136,0.1); border: 1px solid rgba(0,194,136,0.2);">Stickiness</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>6.</strong> Daily Active Users (DAU)<br>
+                                    <strong>7.</strong> Stickiness Ratio (DAU/MAU)<br>
+                                    <strong>8.</strong> Day-30 Cohort Retention (%)<br>
+                                    <strong>9.</strong> Day-90 Cohort Retention (%)<br>
+                                    <strong>10.</strong> Monthly Churned Users (#)
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #ffd700;">
+                                <div class="col-head" style="color: #ffd700;">
+                                    <span>Reactivation</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.2);">Recovery</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>11.</strong> Reactivation Conversion Rate (%)<br>
+                                    <strong>12.</strong> Total Dormant Base (1mo+ inactive)
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            This branch lives upstream of NSM. If WAU collapses, telemetry volume collapses next.
+                        </aside>
+                    </section>
+
+                    <!-- 2c: Tree — Engagement / Activities per user -->
+                    <section>
+                        <div class="stack-chip">Zone 2 <span class="dot">●</span> Tree branch 2 of 4</div>
+                        <h2>Activities per User</h2>
+                        <h3>Where the telemetry actually comes from</h3>
+
+                        <div class="grid-2">
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div class="col-head" style="color: #00C288;">
+                                    <span>13. Activity Sources</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(0,194,136,0.1); border: 1px solid rgba(0,194,136,0.2);">Telemetry</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>14.</strong> GPS-Tracked Activities (#)<br>
+                                    <strong>15.</strong> Manual Activity Submissions (#)<br>
+                                    <strong>16.</strong> Wearable Integration Syncs (#)<br>
+                                    <strong>17.</strong> Time Spent Recording (min)
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div class="col-head" style="color: #FC4C02;">
+                                    <span>Activity Mix</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Quality</span>
+                                </div>
+                                <div class="metric-list">
+                                    • <strong>Outdoor:</strong> runs, rides, walks<br>
+                                    • <strong>Indoor:</strong> strength, treadmill, yoga<br>
+                                    • <strong>Commute logs ratio (%)</strong> — durable habit signal<br>
+                                    • <strong>Avg activities / WAU / week</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            GPS-tracked share is the honesty signal. A drop in this ratio means the NSM is inflating without real exercise behind it.
+                        </aside>
+                    </section>
+
+                    <!-- 2d: Tree — Social & gamification -->
+                    <section>
+                        <div class="stack-chip">Zone 2 <span class="dot">●</span> Tree branch 3 of 4</div>
+                        <h2>Social &amp; Loop Drivers</h2>
+                        <h3>The retention moat: what keeps people from switching to Garmin</h3>
+
+                        <div class="grid-2">
+                            <div class="glass-card" style="border-top: 3px solid #ffd700;">
+                                <div class="col-head" style="color: #ffd700;">
+                                    <span>Interactions</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.2);">Network</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>18.</strong> Kudos Distributed (#)<br>
+                                    <strong>19.</strong> Comments Posted (#)<br>
+                                    <strong>20.</strong> Photos Linked per Activity (#)<br>
+                                    <strong>21.</strong> Follow-Graph Density (#)<br>
+                                    <strong>22.</strong> Clubs / Groups Joined (#)
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div class="col-head" style="color: #00C288;">
+                                    <span>Gamified Rewards</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(0,194,136,0.1); border: 1px solid rgba(0,194,136,0.2);">Hooks</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>23.</strong> Segments Crossed / Matched (#)<br>
+                                    <strong>24.</strong> Challenges Joined (#)<br>
+                                    <strong>25.</strong> Personal Records Achieved (PRs)
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            If kudos and comments fall faster than activities, retention will follow next quarter. Social density is the leading indicator for churn.
+                        </aside>
+                    </section>
+
+                    <!-- 2e: Tree — Monetization -->
+                    <section>
+                        <div class="stack-chip">Zone 2 <span class="dot">●</span> Tree branch 4 of 4</div>
+                        <h2>Monetization Layer</h2>
+                        <h3>Where habit becomes revenue</h3>
+
+                        <div class="grid-2">
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div class="col-head" style="color: #00C288;">
+                                    <span>26. Subscription Funnel</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(0,194,136,0.1); border: 1px solid rgba(0,194,136,0.2);">Conversion</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>27.</strong> Free → Paid Conversion (%)<br>
+                                    <strong>28.</strong> Premium Trial Starts (#)<br>
+                                    <strong>29.</strong> Trial → Paid Retention (%)
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div class="col-head" style="color: #FC4C02;">
+                                    <span>Financial Outputs</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Output</span>
+                                </div>
+                                <div class="metric-list">
+                                    <strong>30.</strong> Monthly Recurring Revenue (MRR)<br>
+                                    <strong>31.</strong> Average Revenue per User (ARPU)<br>
+                                    <strong>32.</strong> Customer Lifetime Value (LTV)<br>
+                                    <strong>33.</strong> Premium Churn Rate (%)
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            We treat 27–33 as lagging outputs. Optimising them directly is the trap — we move them by moving the upstream branches.
+                        </aside>
+                    </section>
+
+                    <!-- 2f: Bridge to revenue -->
+                    <section>
+                        <div class="stack-chip">Zone 2 <span class="dot">●</span> Bridge to revenue</div>
+                        <h2>NSM → Revenue</h2>
+                        <h3>The causal chain from logged activities to MRR</h3>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; width: 96%; margin: 0 auto; text-align: left;">
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div class="step-num">1</div>
+                                    <span class="badge" style="background: rgba(252,76,2,0.12); color: #FC4C02;">NSM</span>
+                                </div>
+                                <strong style="color: #fff; font-size: 0.78em;">Activities logged ↑</strong>
+                                <p style="color: #9a9ab0; font-size: 0.62em; margin: 6px 0 0 0; line-height: 1.45;">
+                                    Telemetry uploads sync. The feed gets fresh content.
+                                </p>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div class="step-num">2</div>
+                                    <span class="badge" style="background: rgba(252,76,2,0.12); color: #FC4C02;">Network</span>
+                                </div>
+                                <strong style="color: #fff; font-size: 0.78em;">Feed density &amp; kudos ↑</strong>
+                                <p style="color: #9a9ab0; font-size: 0.62em; margin: 6px 0 0 0; line-height: 1.45;">
+                                    Peers get notified, react, follow back. Retention locks in.
+                                </p>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div class="step-num">3</div>
+                                    <span class="badge" style="background: rgba(252,76,2,0.12); color: #FC4C02;">Intent</span>
+                                </div>
+                                <strong style="color: #fff; font-size: 0.78em;">Paywall exposure ↑</strong>
+                                <p style="color: #9a9ab0; font-size: 0.62em; margin: 6px 0 0 0; line-height: 1.45;">
+                                    Habituated users hit feature gates: segments, routes, training load.
+                                </p>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div class="step-num" style="background: rgba(0,194,136,0.18); color: #00C288;">4</div>
+                                    <span class="badge" style="background: rgba(0,194,136,0.12); color: #00C288;">$$</span>
+                                </div>
+                                <strong style="color: #fff; font-size: 0.78em;">MRR / LTV ↑</strong>
+                                <p style="color: #9a9ab0; font-size: 0.62em; margin: 6px 0 0 0; line-height: 1.45;">
+                                    Trial starts scale, premium retention extends LTV.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="width: 96%; margin: 20px auto 0; padding: 14px 18px; background: rgba(252,76,2,0.06); border: 1px solid rgba(252,76,2,0.2); border-radius: 12px; text-align: left; font-size: 0.65em; color: #b4b4c6; line-height: 1.5;">
+                            <strong style="color: #fff;">The point:</strong> we don't convert users on day 1. A user with 50 logged workouts is dramatically more likely to upgrade for training metrics than a user with 2. NSM moves money — just with lag.
+                        </div>
+
+                        <aside class="notes">
+                            Lag is the whole story. Stakeholders who push for short-term MRR are asking us to break stage 2 to feed stage 4 — and that drains the funnel.
+                        </aside>
+                    </section>
+
+                </section>
+
+                <!-- ===================== ZONE 3 STACK ===================== -->
+                <section>
+
+                    <!-- 3a: Mandate + main metric -->
+                    <section>
+                        <div class="stack-chip">Zone 3 <span class="dot">●</span> Activation squad</div>
+                        <h2>Squad Mandate</h2>
+                        <h3>What breaks if we disappear, and how we measure success</h3>
+
+                        <div class="grid-2" style="grid-template-columns: 1.1fr 1.6fr;">
+                            <div class="glass-card" style="border-left: 4px solid #FC4C02;">
+                                <span class="badge" style="background: rgba(252,76,2,0.15); color: #FC4C02;">Mandate</span>
+                                <h4 style="font-size: 1.2em; margin: 6px 0 10px 0;">Solve the cold start</h4>
+                                <p style="font-size: 0.66em; line-height: 1.55; color: #b4b4c6; margin: 0;">
+                                    If we disappear, the top of the funnel becomes a leaking bucket. New users download, see an empty feed, fail to pair sensors, and churn.
+                                    <br><br>
+                                    Acquisition spend is wasted before NSM ever sees the user.
+                                </p>
+                                <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; margin-top: 14px; font-size: 0.6em; color: #8e8e93;">
+                                    <strong>Scope:</strong> first 7 days. Setup, first activity, first social tie.
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-left: 4px solid #00C288;">
+                                <span class="badge" style="background: rgba(0, 194, 136, 0.15); color: #00C288;">Main squad metric</span>
+                                <h4 style="font-size: 1.2em; margin: 6px 0 8px 0;">Activation Rate</h4>
+                                <div style="font-size: 0.78em; font-weight: 700; color: #00c288; margin-bottom: 14px; line-height: 1.4;">
                                     % of new users who log ≥ 1 activity AND follow ≥ 1 friend in their first 7 days.
                                 </div>
-                                
-                                <h5 style="color: #ffffff; font-size: 0.78em; margin: 0 0 6px 0;">Why this dual-criteria approach?</h5>
-                                <p style="font-size: 0.64em; line-height: 1.5; color: #b4b4c6; margin: 0;">
-                                    Strava is defined by the intersection of <strong>utility tracking</strong> and <strong>social community</strong>. 
-                                    <br><br>
-                                    A user who logs activities alone gets no kudos or comments, leading to a <strong>50% higher churn rate</strong>. A user who connects socially but logs no telemetry remains a passive zombie. 
-                                    <br><br>
-                                    True "activation" requires both facets.
+                                <div class="sub-head">Why dual-criteria?</div>
+                                <p style="font-size: 0.64em; line-height: 1.55; color: #b4b4c6; margin: 0;">
+                                    Strava lives at the intersection of <strong>tracking</strong> and <strong>community</strong>. A user who logs alone (no kudos) churns ~50% faster. A user who only follows but never logs is a passive lurker. Real activation needs both.
                                 </p>
                             </div>
                         </div>
-                        
-                    </div>
-                    <aside class="notes">
-                        Squad Mandate Notes:
-                        - Clearly frame the Cold Start problem: it represents the single biggest point of user leakage.
-                        - Defend the dual-aspect of our Activation Rate definition: product tracking and social connection. 
-                        - If we only optimized for the first run, we'd fail to capture the network effects that actually keep users from switching to Apple or Garmin native apps.
-                    </aside>
-                </section>
 
-                <!-- ZONE 3: SQUAD METRICS MATRIX -->
-                <section>
-                    <h2>Zone 3: Squad Metric Funnel</h2>
-                    <h3>13 Metrics Mapped to the Activation Journey</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; width: 98%; margin: 0 auto; text-align: left; font-size: 0.58em;">
-                        
-                        <!-- Section 1: Setup & Integrations -->
-                        <div class="glass-card" style="border-top: 3px solid #FC4C02;">
-                            <div style="font-weight: 700; color: #FC4C02; margin-bottom: 12px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>1. Friction & Setup</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Day 0</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <div>
-                                    <strong style="color: #ffffff;">1. Install-to-Sign-up CR (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Conversion rate of app store installs completing registration.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">2. Profile Completion Rate (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Users setting profile image, location, and athletic type.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">3. Device Connection Rate (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Connect rate for external sensors (Garmin, Wahoo, Apple).</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">4. Contact Sync Opt-in (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Share rate of local address books to map existing peers.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">5. Push Notification Opt-in (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Agreement rate to receive activity triggers and badges.</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Section 2: First Experience (Aha) -->
-                        <div class="glass-card" style="border-top: 3px solid #00C288;">
-                            <div style="font-weight: 700; color: #00C288; margin-bottom: 12px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>2. Aha Experience</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(0, 194, 136, 0.1); border: 1px solid rgba(0, 194, 136, 0.2);">Day 1-3</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <div>
-                                    <strong style="color: #ffffff;">6. Time-to-Aha (Hours):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Median hours elapsed between initial sign-up and first upload.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">7. First Activity Log Rate (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Ratio of users uploading at least one workout telemetry file.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">8. Follow graph opt-in (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Ratio of cohort following at least one user within 7 days.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">9. First Kudos Loop (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">% of users receiving at least one Kudo comment on their first activity.</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Section 3: Habits & Retention -->
-                        <div class="glass-card" style="border-top: 3px solid #ffd700;">
-                            <div style="font-weight: 700; color: #ffd700; margin-bottom: 12px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>3. Habit Lock-in</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.2);">Day 4-7</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <div>
-                                    <strong style="color: #ffffff;">10. Day 1 & Day 7 Retention (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Cohort returning to active session on D1 and D7.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">11. Week-1 Activity Density (#):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Average count of logged workouts in the first calendar week.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">12. Follow Density (#):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Average number of follows initiated in the first 7 days.</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff;">13. 7-Day Habit Rate (%):</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">% of cohort logging 3 or more workouts in their first week.</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <aside class="notes">
-                        Squad Funnel Metrics:
-                        - Walk the team through the chronological progression.
-                        - Day 0 focuses on setup (1-5). Device connection (3) is crucial: device sync reduces long-term manual entry drop-offs by 70%.
-                        - Days 1-3 focus on the Aha moment (6-9). Getting that first Kudo (9) acts as a powerful dopamine trigger.
-                        - Days 4-7 lock in habits (10-13) before the cohort decays.
-                    </aside>
-                </section>
+                        <aside class="notes">
+                            The dual-criteria definition is deliberate. Defend it: optimising for first-run alone produces ghost users; optimising for follows alone produces lurkers.
+                        </aside>
+                    </section>
 
-                <!-- ZONE 4: FEATURE DEEP DIVE -->
-                <section>
-                    <h2>Zone 4: Feature Deep-Dive</h2>
-                    <h3>Beginner 7-Day Challenge</h3>
-                    
-                    <p style="font-size: 0.72em; color: #b4b4c6; max-width: 800px; margin: 0 auto 30px auto; line-height: 1.5;">
-                        An opt-in onboarding activation challenge. Users are offered to commit to a 7-day habit streak at sign-up, supported by daily streaks and digital rewards.
-                    </p>
-                    
-                    <!-- Timeline flow -->
-                    <div style="display: flex; justify-content: space-between; align-items: stretch; width: 98%; margin: 0 auto; gap: 10px;">
-                        
-                        <!-- Step 1 -->
-                        <div class="glass-card" style="flex: 1; padding: 15px; font-size: 0.58em; text-align: center; border-bottom: 4px solid #FC4C02;">
-                            <div style="background: rgba(252,76,2,0.15); color: #FC4C02; font-weight: bold; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">1</div>
-                            <strong style="color: #ffffff; display: block; margin-bottom: 6px; font-size: 1.05em;">1. Funnel Entry (Opt-In)</strong>
-                            <span style="color: #9a9ab0; line-height: 1.4;">Presented post-onboarding. Highlights building a realistic workout streak. Promotes physical routine.</span>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; color: #FC4C02; font-weight: bold; font-size: 1.1em;">➔</div>
-                        
-                        <!-- Step 2 -->
-                        <div class="glass-card" style="flex: 1; padding: 15px; font-size: 0.58em; text-align: center; border-bottom: 4px solid #00C288;">
-                            <div style="background: rgba(0, 194, 136, 0.15); color: #00C288; font-weight: bold; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">2</div>
-                            <strong style="color: #ffffff; display: block; margin-bottom: 6px; font-size: 1.05em;">2. Daily Push Nudge</strong>
-                            <span style="color: #9a9ab0; line-height: 1.4;">Pushes sent dynamically based on local timezone habit forecasts. Shows active streak status.</span>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; color: #00C288; font-weight: bold; font-size: 1.1em;">➔</div>
-                        
-                        <!-- Step 3 -->
-                        <div class="glass-card" style="flex: 1; padding: 15px; font-size: 0.58em; text-align: center; border-bottom: 4px solid #ffd700;">
-                            <div style="background: rgba(255, 215, 0, 0.15); color: #ffd700; font-weight: bold; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">3</div>
-                            <strong style="color: #ffffff; display: block; margin-bottom: 6px; font-size: 1.05em;">3. Streak Telemetry Loop</strong>
-                            <span style="color: #9a9ab0; line-height: 1.4;">User records activity. Strava updates the in-app user dashboard and advances the streak metrics.</span>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; color: #ffd700; font-weight: bold; font-size: 1.1em;">➔</div>
-                        
-                        <!-- Step 4 -->
-                        <div class="glass-card" style="flex: 1; padding: 15px; font-size: 0.58em; text-align: center; border-bottom: 4px solid #007aff;">
-                            <div style="background: rgba(0, 122, 255, 0.15); color: #007aff; font-weight: bold; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">4</div>
-                            <strong style="color: #ffffff; display: block; margin-bottom: 6px; font-size: 1.05em;">4. Reward & Loop Amplification</strong>
-                            <span style="color: #9a9ab0; line-height: 1.4;">Day 7 awards a digital profile badge and triggers a one-tap share option to Instagram Stories.</span>
-                        </div>
-                        
-                    </div>
-                    
-                    <aside class="notes">
-                        7-Day Challenge Flow:
-                        - Highlight the seamless onboarding.
-                        - The push notifications (Step 2) are key. They aren't generic: they are tailored to historical activity times (e.g. if you log in the morning, we nudge you in the morning).
-                        - Unlocking the badge (Step 4) transitions external motivation (badge reward) to organic habit loops (social feed shares).
-                    </aside>
-                </section>
+                    <!-- 3b: Funnel — Day 0 -->
+                    <section>
+                        <div class="stack-chip">Zone 3 <span class="dot">●</span> Funnel · Day 0</div>
+                        <h2>Friction &amp; Setup</h2>
+                        <h3>Day 0 — five metrics covering the first session</h3>
 
-                <!-- ZONE 4: FEATURE SIGNALS AND RISKS -->
-                <section>
-                    <h2>Zone 4: Signals & Guardrails</h2>
-                    <h3>Success Metrics vs. Failure Risks</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1.15fr 1.85fr; gap: 20px; width: 96%; margin: 0 auto; text-align: left; font-size: 0.58em;">
-                        
-                        <!-- Success Signals -->
-                        <div class="glass-card" style="border-top: 3px solid #00C288;">
-                            <div style="font-weight: 700; color: #00C288; margin-bottom: 15px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>Quality & Success Signals</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(0, 194, 136, 0.1); border: 1px solid rgba(0, 194, 136, 0.2);">HEART Framework</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <div>
-                                    <strong style="color: #ffffff; font-size: 1.05em;">Adoption:</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Challenge Opt-in Rate (% of onboarding cohorts tapping 'Accept').</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff; font-size: 1.05em;">Engagement:</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Active Streak Progression (Median consecutive active days).</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff; font-size: 1.05em;">Task Success:</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Day-7 Completion Rate (% of opt-ins receiving the profile badge).</div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff; font-size: 1.05em;">Expansion / Referral:</strong>
-                                    <div style="color: #9a9ab0; margin-top: 2px;">Social Share CTR (% of completers posting badges to IG/Feed).</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Risks & Trade-offs -->
-                        <div class="glass-card" style="border-top: 3px solid #FC4C02;">
-                            <div style="font-weight: 700; color: #FC4C02; margin-bottom: 15px; font-size: 1.1em; display: flex; align-items: center; justify-content: space-between;">
-                                <span>Trade-offs & Mitigations</span>
-                                <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Guardrails</span>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 12px;">
-                                <div>
-                                    <strong style="color: #ffffff; font-size: 1.05em;">⚠️ Goodhart's Law (Metric Manipulation):</strong>
-                                    <div style="color: #9a9ab0; margin-left: 10px; margin-top: 2px; line-height: 1.4;">
-                                        <em>Risk:</em> Users logging multiple empty 30-second workouts manually to secure the badge.
-                                        <br><em>Mitigation:</em> Track **% of Streak Workouts logged via Manual Entry** (vs GPS). Set a 5-minute threshold filter for manual logs.
+                        <div class="grid-3" style="grid-template-columns: 1fr 1fr;">
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.66em; line-height: 1.5; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">1. Install → Sign-up CR (%)</strong>
+                                        <div>Of installs that complete registration.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">2. Profile Completion (%)</strong>
+                                        <div>Image, location, athletic type set.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">3. Device Connection Rate (%)</strong>
+                                        <div>Garmin / Wahoo / Apple Watch paired.</div>
                                     </div>
                                 </div>
-                                <div>
-                                    <strong style="color: #ffffff; font-size: 1.05em;">⚠️ Notification Burnout:</strong>
-                                    <div style="color: #9a9ab0; margin-left: 10px; margin-top: 2px; line-height: 1.4;">
-                                        <em>Risk:</em> Seven days of push nudges irritate users, triggering global push opt-outs.
-                                        <br><em>Mitigation:</em> Track **14-Day Push Opt-out Rate (%)** of challenge participants vs control.
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.66em; line-height: 1.5; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">4. Contact Sync Opt-in (%)</strong>
+                                        <div>Address book shared to surface friends.</div>
                                     </div>
-                                </div>
-                                <div>
-                                    <strong style="color: #ffffff; font-size: 1.05em;">⚠️ The Post-Challenge Cliff:</strong>
-                                    <div style="color: #9a9ab0; margin-left: 10px; margin-top: 2px; line-height: 1.4;">
-                                        <em>Risk:</em> Sudden drop in logging on Day 8 as extrinsic gamified goals vanish.
-                                        <br><em>Mitigation:</em> Track **Day 8-14 Retention Rate (%)** of completers. Trigger a Day-7 post-challenge club recommendation to establish intrinsic social roots.
+                                    <div>
+                                        <strong style="color: #fff;">5. Push Notification Opt-in (%)</strong>
+                                        <div>Permission granted for triggers and badges.</div>
+                                    </div>
+                                    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; color: #8e8e93;">
+                                        <strong style="color:#fc4c02;">Why these:</strong> device sync alone cuts long-term manual-entry churn by ~70%. Contact sync is the seed for the social half of activation.
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
-                    
-                    <aside class="notes">
-                        Success and Risks Notes:
-                        - Highlight the Post-Challenge Cliff: This is a classic behavioral psychology trap where extrinsic rewards (the badge) can crowd out intrinsic motivation (enjoying the workout).
-                        - Our mitigation is to redirect users on Day 7 to local running/cycling clubs, transitioning them from a solo gamified challenge to community-based motivation.
-                    </aside>
+
+                        <aside class="notes">
+                            Day 0 is mostly permissions and pairing. Every prompt is a fork in the road. Tracking each one separately lets us see where we actually leak.
+                        </aside>
+                    </section>
+
+                    <!-- 3c: Funnel — Day 1-3 Aha -->
+                    <section>
+                        <div class="stack-chip">Zone 3 <span class="dot">●</span> Funnel · Day 1–3</div>
+                        <h2>Aha Experience</h2>
+                        <h3>The first activity, the first kudo</h3>
+
+                        <div class="grid-2">
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.68em; line-height: 1.55; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">6. Time-to-Aha (hours)</strong>
+                                        <div>Median hours from sign-up to first upload.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">7. First Activity Log Rate (%)</strong>
+                                        <div>% of cohort uploading at least one workout.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.68em; line-height: 1.55; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">8. Follow Graph Opt-in (%)</strong>
+                                        <div>% following at least one user inside 7 days.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">9. First Kudos Loop (%)</strong>
+                                        <div>% receiving ≥ 1 kudos on the first activity.</div>
+                                        <div style="color:#fc4c02; margin-top: 4px;"><em>The single strongest D7-retention predictor we have.</em></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            Getting the first kudo within 24h is a dopamine event. Our team's job is to engineer that — surface seed-follows from contact sync before the first upload lands.
+                        </aside>
+                    </section>
+
+                    <!-- 3d: Funnel — Day 4-7 -->
+                    <section>
+                        <div class="stack-chip">Zone 3 <span class="dot">●</span> Funnel · Day 4–7</div>
+                        <h2>Habit Lock-in</h2>
+                        <h3>Convert curiosity into routine before the cohort decays</h3>
+
+                        <div class="grid-2">
+                            <div class="glass-card" style="border-top: 3px solid #ffd700;">
+                                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.68em; line-height: 1.55; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">10. Day-1 &amp; Day-7 Retention (%)</strong>
+                                        <div>Cohort returning to an active session.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">11. Week-1 Activity Density (#)</strong>
+                                        <div>Avg workouts logged in the first calendar week.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #ffd700;">
+                                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.68em; line-height: 1.55; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">12. Follow Density (#)</strong>
+                                        <div>Avg follows initiated in the first 7 days.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">13. 7-Day Habit Rate (%)</strong>
+                                        <div>% of cohort logging ≥ 3 workouts in week 1.</div>
+                                        <div style="color:#ffd700; margin-top: 4px;"><em>This is the lead indicator that feeds NSM next quarter.</em></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            By day 7 the cohort is either habituated or gone. Metric 13 — the 3-workouts-in-week-1 rate — is the strongest predictor of D90 retention we've seen.
+                        </aside>
+                    </section>
+
                 </section>
 
-                <!-- BONUS SLIDE: ATTACK & DEFENSE STRATEGY -->
+                <!-- ===================== ZONE 4 STACK ===================== -->
                 <section>
-                    <h2>Presentation Strategy</h2>
-                    <h3>Securing the +20% Presentation Bonus (Attack & Defense Guide)</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 96%; margin: 0 auto; text-align: left; font-size: 0.55em;">
-                        
-                        <!-- Defense Column -->
+
+                    <!-- 4a: Feature flow -->
+                    <section>
+                        <div class="stack-chip">Zone 4 <span class="dot">●</span> Feature</div>
+                        <h2>Beginner 7-Day Challenge</h2>
+                        <h3>Opt-in onboarding challenge — log one activity per day for seven days</h3>
+
+                        <div style="display: flex; justify-content: space-between; align-items: stretch; width: 98%; margin: 0 auto; gap: 8px;">
+
+                            <div class="glass-card" style="flex: 1; padding: 14px; font-size: 0.6em; text-align: center; border-bottom: 4px solid #FC4C02;">
+                                <div class="step-num" style="margin: 0 auto 10px auto;">1</div>
+                                <strong style="color: #fff; display: block; margin-bottom: 6px;">Funnel Entry</strong>
+                                <span style="color: #9a9ab0; line-height: 1.45;">Offered post-onboarding. Frames a realistic streak. Any activity counts: walk, yoga, run.</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; color: #FC4C02; font-weight: 800; font-size: 1.3em;">→</div>
+
+                            <div class="glass-card" style="flex: 1; padding: 14px; font-size: 0.6em; text-align: center; border-bottom: 4px solid #00C288;">
+                                <div class="step-num" style="background: rgba(0,194,136,0.18); color: #00C288; margin: 0 auto 10px auto;">2</div>
+                                <strong style="color: #fff; display: block; margin-bottom: 6px;">Daily Nudge</strong>
+                                <span style="color: #9a9ab0; line-height: 1.45;">Push sent at user's historical activity window. Shows current streak counter.</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; color: #00C288; font-weight: 800; font-size: 1.3em;">→</div>
+
+                            <div class="glass-card" style="flex: 1; padding: 14px; font-size: 0.6em; text-align: center; border-bottom: 4px solid #ffd700;">
+                                <div class="step-num" style="background: rgba(255,215,0,0.18); color: #ffd700; margin: 0 auto 10px auto;">3</div>
+                                <strong style="color: #fff; display: block; margin-bottom: 6px;">Streak Loop</strong>
+                                <span style="color: #9a9ab0; line-height: 1.45;">User records activity. Streak advances. Dashboard updates.</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; color: #ffd700; font-weight: 800; font-size: 1.3em;">→</div>
+
+                            <div class="glass-card" style="flex: 1; padding: 14px; font-size: 0.6em; text-align: center; border-bottom: 4px solid #007aff;">
+                                <div class="step-num" style="background: rgba(0,122,255,0.18); color: #007aff; margin: 0 auto 10px auto;">4</div>
+                                <strong style="color: #fff; display: block; margin-bottom: 6px;">Reward &amp; Share</strong>
+                                <span style="color: #9a9ab0; line-height: 1.45;">Day 7 unlocks a profile badge and a one-tap share to Stories.</span>
+                            </div>
+
+                        </div>
+
+                        <div style="width: 96%; margin: 22px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 0.62em; text-align: left;">
+                            <div style="padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 10px; border-left: 3px solid #00C288;">
+                                <strong style="color: #fff;">Value if it works:</strong>
+                                <span style="color: #b4b4c6;"> users carry a 7-day logging habit into week 2, raising D7 retention and feeding NSM.</span>
+                            </div>
+                            <div style="padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 10px; border-left: 3px solid #FC4C02;">
+                                <strong style="color: #fff;">Entry points:</strong>
+                                <span style="color: #b4b4c6;"> sign-up flow card, post-first-activity prompt, dormant re-engagement push.</span>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            The push timing is the key engineering choice: nudges fire at the user's historical activity window, not a global 8am blast.
+                        </aside>
+                    </section>
+
+                    <!-- 4b: Success signals -->
+                    <section>
+                        <div class="stack-chip">Zone 4 <span class="dot">●</span> Success signals</div>
+                        <h2>Quality &amp; Success</h2>
+                        <h3>HEART framework applied to the 7-day challenge</h3>
+
+                        <div class="grid-2">
+                            <div class="glass-card" style="border-top: 3px solid #00C288;">
+                                <div class="col-head" style="color: #00C288;">
+                                    <span>Adoption &amp; Engagement</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(0,194,136,0.1); border: 1px solid rgba(0,194,136,0.2);">HEART</span>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.66em; line-height: 1.55; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">Adoption</strong>
+                                        <div>Challenge opt-in rate — % of onboarding cohort tapping 'Accept'.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">Engagement</strong>
+                                        <div>Active streak progression — median consecutive active days.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #ffd700;">
+                                <div class="col-head" style="color: #ffd700;">
+                                    <span>Task Success &amp; Referral</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.2);">HEART</span>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.66em; line-height: 1.55; color: #b4b4c6;">
+                                    <div>
+                                        <strong style="color: #fff;">Task Success</strong>
+                                        <div>Day-7 completion rate — % of opt-ins receiving the badge.</div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #fff;">Referral</strong>
+                                        <div>Social share CTR — % of completers posting the badge.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            HEART maps cleanly onto this feature. Adoption is the funnel entry, engagement is the streak, task success is the completion, referral is the share. Happiness lives in the Zone 4 risks slide.
+                        </aside>
+                    </section>
+
+                    <!-- 4c: Risks & guardrails -->
+                    <section>
+                        <div class="stack-chip">Zone 4 <span class="dot">●</span> Risks &amp; guardrails</div>
+                        <h2>What Could Break</h2>
+                        <h3>Failure modes we instrument before launch</h3>
+
+                        <div class="grid-3">
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div class="col-head" style="color: #FC4C02;">
+                                    <span>⚠️ Goodhart</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Gaming</span>
+                                </div>
+                                <div style="font-size: 0.64em; line-height: 1.5; color: #b4b4c6;">
+                                    <strong style="color:#fff;">Risk:</strong> empty 30-second manual logs just to keep the streak.
+                                    <br><br>
+                                    <strong style="color:#fff;">Mitigation:</strong> track % of streak workouts logged via manual entry (vs GPS). Apply a 5-min minimum duration filter on manual logs.
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div class="col-head" style="color: #FC4C02;">
+                                    <span>⚠️ Burnout</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Push fatigue</span>
+                                </div>
+                                <div style="font-size: 0.64em; line-height: 1.5; color: #b4b4c6;">
+                                    <strong style="color:#fff;">Risk:</strong> seven days of nudges trigger a global push opt-out.
+                                    <br><br>
+                                    <strong style="color:#fff;">Mitigation:</strong> 14-day push opt-out rate of challenge participants vs control. Auto-throttle if delta &gt; 2pp.
+                                </div>
+                            </div>
+
+                            <div class="glass-card" style="border-top: 3px solid #FC4C02;">
+                                <div class="col-head" style="color: #FC4C02;">
+                                    <span>⚠️ The Cliff</span>
+                                    <span class="badge" style="font-size: 0.5em; background: rgba(252,76,2,0.1); border: 1px solid rgba(252,76,2,0.2);">Post-streak drop</span>
+                                </div>
+                                <div style="font-size: 0.64em; line-height: 1.5; color: #b4b4c6;">
+                                    <strong style="color:#fff;">Risk:</strong> day-8 logging collapses once the extrinsic reward vanishes.
+                                    <br><br>
+                                    <strong style="color:#fff;">Mitigation:</strong> day 8–14 retention of completers vs control. Trigger a club / local-group recommendation on day 7 to convert extrinsic → intrinsic motivation.
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="notes">
+                            The Cliff is the most important risk. Behavioural psych says extrinsic rewards crowd out intrinsic motivation — so we route completers into a club recommendation before the streak ends.
+                        </aside>
+                    </section>
+
+                </section>
+
+                <!-- ===================== STRATEGY ===================== -->
+                <section>
+                    <h2>Attack &amp; Defense</h2>
+                    <h3>Pre-loaded arguments for the +20% bonus</h3>
+
+                    <div class="grid-2">
                         <div class="glass-card" style="border-left: 4px solid #00C288;">
-                            <div style="font-weight: 700; color: #00C288; margin-bottom: 12px; font-size: 1.1em; display: flex; align-items: center; gap: 8px;">
-                                <span>🛡️ Defending Our Tree & Feature</span>
+                            <div style="font-weight: 700; color: #00C288; margin-bottom: 12px; font-size: 1em;">
+                                🛡️ Defending our tree
                             </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 10px; color: #CCC; line-height: 1.45;">
+
+                            <div style="display: flex; flex-direction: column; gap: 12px; color: #ccc; line-height: 1.5; font-size: 0.62em;">
                                 <div>
-                                    <strong style="color: #FFF;">Q: "Why is Activities Logged your NSM and not active subscriber volume?"</strong>
-                                    <br>
-                                    <span style="color: #9a9ab0;"><em>Defend:</em> "Paid subscribers are a lagging output of habit. If we optimize for trial volume, we make onboarding too aggressive. Optimizing Activities Logged protects the free base, building the social network effect that feeds the conversion paywalls."</span>
+                                    <strong style="color: #fff;">Q: Why isn't your NSM paid subscriber volume?</strong>
+                                    <div style="color: #9a9ab0; margin-top: 4px;">
+                                        <em>Defend:</em> paid subs are a lagging output of habit. Targeting them directly destroys the free-network flywheel that feeds the paywall in the first place.
+                                    </div>
                                 </div>
-                                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin: 5px 0;">
+                                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin: 0;">
                                 <div>
-                                    <strong style="color: #FFF;">Q: "Won't a 7-day challenge burn out raw beginners?"</strong>
-                                    <br>
-                                    <span style="color: #9a9ab0;"><em>Defend:</em> "The challenge accepts *any* activity — walk, yoga, stretch, run. It's about establishing the digital habit of logging with low physical friction. We also track 'Push Opt-out Rates' as a safety valve."</span>
+                                    <strong style="color: #fff;">Q: Won't a 7-day streak burn out beginners?</strong>
+                                    <div style="color: #9a9ab0; margin-top: 4px;">
+                                        <em>Defend:</em> the challenge accepts any activity — walk, yoga, stretch. The point is the digital habit of logging, not athletic intensity. We monitor push opt-out as the safety valve.
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Attack Column -->
+
                         <div class="glass-card" style="border-left: 4px solid #FC4C02;">
-                            <div style="font-weight: 700; color: #FC4C02; margin-bottom: 12px; font-size: 1.1em; display: flex; align-items: center; gap: 8px;">
-                                <span>⚔️ Challenging Other Teams</span>
+                            <div style="font-weight: 700; color: #FC4C02; margin-bottom: 12px; font-size: 1em;">
+                                ⚔️ Challenges to other teams
                             </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 10px; color: #CCC; line-height: 1.45;">
+
+                            <div style="display: flex; flex-direction: column; gap: 12px; color: #ccc; line-height: 1.5; font-size: 0.62em;">
                                 <div>
-                                    <strong style="color: #FFF; font-size: 0.95em;">Target Card A (Uber): One-tap cancel rematch</strong>
-                                    <br>
-                                    <span style="color: #9a9ab0;"><em>Challenge:</em> "Does matching cancelled riders immediately cannibalize the normal dispatch queue, delaying standard bookings? What safety guardrail metrics prevent standard match SLA degradation?"</span>
+                                    <strong style="color: #fff;">Card A — Uber rematch:</strong>
+                                    <div style="color: #9a9ab0; margin-top: 4px;">Does the rematch queue cannibalise standard dispatch? Where's the SLA guardrail?</div>
                                 </div>
-                                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin: 5px 0;">
+                                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin: 0;">
                                 <div>
-                                    <strong style="color: #FFF; font-size: 0.95em;">Target Card D (Etsy): Camera Visual Search</strong>
-                                    <br>
-                                    <span style="color: #9a9ab0;"><em>Challenge:</em> "User-uploaded photos are often dark or poorly angled. A low search precision leads to quick user abandonment. How is 'Empty/Zero Result Rate' or 'Search-to-Detail Click CTR' reflected in your discovery metrics?"</span>
+                                    <strong style="color: #fff;">Card D — Etsy visual search:</strong>
+                                    <div style="color: #9a9ab0; margin-top: 4px;">User photos are dark or angled. What's your zero-result rate and search-to-detail CTR?</div>
                                 </div>
-                                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin: 5px 0;">
+                                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin: 0;">
                                 <div>
-                                    <strong style="color: #FFF; font-size: 0.95em;">Target Card F (YouTube): Push re-engagement digest</strong>
-                                    <br>
-                                    <span style="color: #9a9ab0;"><em>Challenge:</em> "Push notifications to dormant users often backfire, causing users to delete the app. What is your guardrail metric for push-driven App Uninstalls or push disablement rate?"</span>
+                                    <strong style="color: #fff;">Card F — YouTube weekly digest:</strong>
+                                    <div style="color: #9a9ab0; margin-top: 4px;">Dormant-user pushes drive uninstalls. Where's the uninstall / push-disable guardrail?</div>
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
+
                     <aside class="notes">
-                        Bonus Strategy:
-                        - Highlight that challenging other teams isn't about being hostile; it's about showcasing systematic product analytics logic.
-                        - Focus questions on queue cannibalization (Uber), search precision (Etsy), and spam fatigue (YouTube).
-                        - When defending, stand firm on the power of product habits and network density as the ultimate defense.
+                        Defence: stand on network density. Attack: queue cannibalisation (Uber), search precision (Etsy), push fatigue (YouTube).
                     </aside>
                 </section>
 
-                <!-- FINAL THANK YOU SLIDE -->
+                <!-- ===================== THANK YOU ===================== -->
                 <section>
-                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 450px;">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
                         <h2 style="font-size: 2.2em; font-weight: 800; margin-bottom: 10px;">Thank You</h2>
-                        <h3 style="color: #ffffff !important; font-size: 1.1em !important; font-weight: 500 !important; margin-bottom: 40px;">Questions & Metric Tree Defense</h3>
-                        
-                        <div style="background: rgba(252, 76, 2, 0.05); border: 1px solid rgba(252, 76, 2, 0.2); border-radius: 12px; padding: 20px 40px; text-align: center; max-width: 500px;">
-                            <div style="color: #FC4C02; font-size: 0.75em; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 5px;">Group E</div>
-                            <div style="color: #FFF; font-size: 0.9em; font-weight: 600;">Strava Activation Squad</div>
+                        <h3 style="color: #ffffff !important; font-size: 1em !important; font-weight: 500 !important; margin-bottom: 36px;">Questions &amp; Metric Tree Defense</h3>
+
+                        <div style="background: rgba(252, 76, 2, 0.05); border: 1px solid rgba(252, 76, 2, 0.2); border-radius: 12px; padding: 18px 36px; text-align: center; max-width: 500px;">
+                            <div style="color: #FC4C02; font-size: 0.65em; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px;">Group E</div>
+                            <div style="color: #FFF; font-size: 0.85em; font-weight: 600;">Strava Activation Squad</div>
                         </div>
                     </div>
                 </section>
@@ -853,7 +926,8 @@
                 height: 800,
                 margin: 0.05,
                 minScale: 0.2,
-                maxScale: 2.0
+                maxScale: 2.0,
+                navigationMode: 'grid'
             });
         </script>
     </body>
